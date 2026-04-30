@@ -36,9 +36,36 @@ document.addEventListener('DOMContentLoaded', () => {
     userInfoForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const height = document.getElementById('height').value;
-        const weight = document.getElementById('weight').value;
+        const heightInput = document.getElementById('height').value;
+        const weightInput = document.getElementById('weight').value;
         const diet = document.querySelector('input[name="diet"]:checked').value;
+
+        // Extract numbers
+        const heightMatch = heightInput.match(/\d+(\.\d+)?/);
+        const weightMatch = weightInput.match(/\d+(\.\d+)?/);
+
+        if (!heightMatch || !weightMatch) {
+            alert('Please enter valid numbers for height and weight.');
+            return;
+        }
+
+        const heightVal = parseFloat(heightMatch[0]);
+        const weightVal = parseFloat(weightMatch[0]);
+
+        // Basic validation
+        if (heightVal < 30 || heightVal > 300) {
+            alert('Please enter a realistic height.');
+            return;
+        }
+
+        if (weightVal < 10 || weightVal > 500) {
+            alert('Please enter a realistic weight.');
+            return;
+        }
+        
+        // Use original input for UI display to preserve units
+        const height = heightInput;
+        const weight = weightInput;
         
         // Update UI
         summaryHeight.textContent = height;

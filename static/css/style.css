@@ -451,6 +451,14 @@ h1, h2, h3, h4 {
     color: #000;
 }
 
+.msg-content img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 15px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
 /* Table styling for macros */
 .msg-content table {
     width: 100%;

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifePlot - AI Dietary Assistant</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar / User Info Panel -->
+        <aside class="sidebar glass-panel">
+            <div class="brand">
+                <i class="fa-solid fa-leaf text-gradient"></i>
+                <h1>LifePlot</h1>
+            </div>
+            
+            <div class="profile-section" id="profile-setup">
+                <h2>Your Profile</h2>
+                <p>Let's tailor your diet plan.</p>
+                
+                <form id="user-info-form">
+                    <div class="input-group">
+                        <label for="height">Height (cm/in)</label>
+                        <input type="text" id="height" placeholder="e.g., 180 cm" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="weight">Weight (kg/lbs)</label>
+                        <input type="text" id="weight" placeholder="e.g., 75 kg" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Dietary Preference</label>
+                        <div class="radio-group">
+                            <label class="radio-btn">
+                                <input type="radio" name="diet" value="veg" checked>
+                                <span>Vegetarian</span>
+                            </label>
+                            <label class="radio-btn">
+                                <input type="radio" name="diet" value="non-veg">
+                                <span>Non-Veg</span>
+                            </label>
+                            <label class="radio-btn">
+                                <input type="radio" name="diet" value="vegan">
+                                <span>Vegan</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Generate Initial Plan <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </div>
+            
+            <div class="profile-summary hidden" id="profile-summary">
+                <h2>Profile Active</h2>
+                <div class="summary-card">
+                    <div class="stat"><span class="label">Height</span><span class="value" id="summary-height">--</span></div>
+                    <div class="stat"><span class="label">Weight</span><span class="value" id="summary-weight">--</span></div>
+                    <div class="stat"><span class="label">Diet</span><span class="value" id="summary-diet">--</span></div>
+                </div>
+                <button id="reset-profile" class="btn-secondary">Update Profile</button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area glass-panel">
+            <header class="chat-header">
+                <h2><i class="fa-solid fa-robot"></i> LifePlot AI</h2>
+                <div class="status">
+                    <span class="status-dot"></span> Online
+                </div>
+            </header>
+            
+            <div class="messages-container" id="chat-messages">
+                <div class="message system-msg">
+                    <div class="msg-avatar"><i class="fa-solid fa-leaf"></i></div>
+                    <div class="msg-content">
+                        Hello! I'm LifePlot, your personal dietary and health assistant. Please fill out your profile on the left to get started with a customized diet plan, or just ask me any health-related questions!
+                    </div>
+                </div>
+                <!-- Messages will be injected here -->
+            </div>
+            
+            <div class="input-area">
+                <form id="chat-form">
+                    <input type="text" id="chat-input" placeholder="Ask about macros, alternatives, or health tips..." autocomplete="off">
+                    <button type="submit" class="btn-send" id="send-btn" disabled>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
